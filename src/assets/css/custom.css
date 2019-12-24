@@ -1,0 +1,22 @@
+/*
+Global CSS Styles
+*/
+
+.half-circle-spinner{
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+circle.circle-1{
+    border-radius: 4px;
+}
+
+circle.circle-2{
+    border-radius: 4px;
+}
+
+.bg-custom-pink{
+    border-color: #f6548d !important;
+    background-color: #f6548d !important;
+}

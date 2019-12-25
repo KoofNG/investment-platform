@@ -10,7 +10,7 @@
               <img alt="Image placeholder" src="img/theme/user.png"/>
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm font-weight-bold">Hello, {{this.user.first_name}} {{this.user.last_name}}</span>
+              <span class="mb-0 text-sm font-weight-bold">Hello, {{this.user.first_name || "Loading.."}} {{this.user.last_name || "Loading.."}}</span>
             </div>
           </div>
 

@@ -7,7 +7,7 @@
                 <span class="navbar-toggler-icon"></span>
             </navbar-toggle-button>
             <router-link class="navbar-brand" id="logo__name" to="/">
-              Milade
+              Honiland
                 <!-- <img :src="logo" class="navbar-brand-img" alt="..."> -->
             </router-link>
 

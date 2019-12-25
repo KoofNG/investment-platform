@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { db } from "../main";
+// import { db } from "../main";
 import { HalfCircleSpinner } from "epic-spinners";
 import { FadeTransition } from "vue2-transitions";
 
@@ -109,22 +109,22 @@ export default {
     }
   },
 
-  firestore() {
-    this.months.forEach(month => {
-      const monthlyTransaction = db
-        .collection("Payments")
-        .doc("2019")
-        .collection(`${month}`)
-        .get()
-        .then(querySnapshot => {
-          const documents = querySnapshot.docs.map(doc => doc.data());
-          documents.forEach(element => {
-            this.payments.push(element);
-          });
-          return this.payments;
-        });
-    });
-  }
+  // firestore() {
+  //   this.months.forEach(month => {
+  //     const monthlyTransaction = db
+  //       .collection("Payments")
+  //       .doc("2019")
+  //       .collection(`${month}`)
+  //       .get()
+  //       .then(querySnapshot => {
+  //         const documents = querySnapshot.docs.map(doc => doc.data());
+  //         documents.forEach(element => {
+  //           this.payments.push(element);
+  //         });
+  //         return this.payments;
+  //       });
+  //   });
+  // }
 };
 </script>
 

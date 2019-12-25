@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { db } from "../main";
+// import { db } from "../main";
 import { HalfCircleSpinner } from "epic-spinners";
 import { FadeTransition } from "vue2-transitions";
 import { stat } from "fs";
@@ -142,11 +142,11 @@ export default {
 
   watch: {},
 
-  firestore() {
-    return {
-      orders: db.collection("Requests")
-    };
-  }
+  // firestore() {
+  //   return {
+  //     orders: db.collection("Requests")
+  //   };
+  // }
 };
 </script>
 

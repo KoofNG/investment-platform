@@ -175,7 +175,7 @@
 </template>
 
 <script>
-import { db } from "@/main";
+// import { db } from "@/main";
 import { HalfCircleSpinner } from "epic-spinners";
 import { FadeTransition } from "vue2-transitions";
 
@@ -213,23 +213,23 @@ export default {
       driver.isFlagged = !driver.isFlagged;
       let text = driver.isFlagged ? "Flagged" : "Unflagged";
 
-      db.collection("Drivers")
-        .doc(driver.id)
-        .set(driver)
-        .then(() => {
-          this.$notify({
-            title: "Success",
-            text: "Driver has been " + text,
-            type: "info"
-          });
-        })
-        .catch(err => {
-          this.$notify({
-            title: "Error",
-            text: err.message,
-            type: "error"
-          });
-        });
+      // db.collection("Drivers")
+      //   .doc(driver.id)
+      //   .set(driver)
+      //   .then(() => {
+      //     this.$notify({
+      //       title: "Success",
+      //       text: "Driver has been " + text,
+      //       type: "info"
+      //     });
+      //   })
+      //   .catch(err => {
+      //     this.$notify({
+      //       title: "Error",
+      //       text: err.message,
+      //       type: "error"
+      //     });
+      //   });
     }
   },
   computed: {
@@ -238,11 +238,11 @@ export default {
     }
   },
 
-  firestore() {
-    return {
-      drivers: db.collection("Drivers")
-    };
-  }
+  // firestore() {
+  //   return {
+  //     drivers: db.collection("Drivers")
+  //   };
+  // }
 };
 </script>
 

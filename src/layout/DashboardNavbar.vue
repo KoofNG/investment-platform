@@ -10,7 +10,7 @@
               <img alt="Image placeholder" src="img/theme/user.png"/>
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm font-weight-bold">Hello {{this.user.displayName}}</span>
+              <span class="mb-0 text-sm font-weight-bold">Hello, {{this.user.first_name || "Loading.."}} {{this.user.last_name || "Loading.."}}</span>
             </div>
           </div>
 
@@ -36,7 +36,14 @@ export default {
   },
   
   created(){
-      this.user = this.$cookies.get('user');
+      // this.user = this.$cookies.get('user');
+    this.$http.get("rest-auth/user/").then((res, err) => {
+      if (err) {
+        console.log(err);
+      }
+      this.user = res.body;
+      console.log(res);
+    });
   },
   
   methods: {

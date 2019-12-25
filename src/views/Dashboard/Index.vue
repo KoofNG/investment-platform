@@ -86,7 +86,7 @@
   </div>
 </template>
 <script>
-import { db } from "@/main";
+// import { db } from "@/main";
 import { HalfCircleSpinner } from "epic-spinners/src/lib";
 import { FadeTransition } from "vue2-transitions";
 
@@ -107,17 +107,16 @@ export default {
     };
   },
   methods: {},
-  mounted() {
-  
+  mounted() {  
   },
-  firestore() {
-    return {
-      orders: db.collection("Requests"),
-      users: db.collection("Users"),
-      drivers: db.collection("Drivers"),
-      cars: db.collection("Cars")
-    };
-  }
+  // firestore() {
+  //   return {
+  //     orders: db.collection("Requests"),
+  //     users: db.collection("Users"),
+  //     drivers: db.collection("Drivers"),
+  //     cars: db.collection("Cars")
+  //   };
+  // }
 };
 </script>
 <style scoped></style>

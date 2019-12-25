@@ -117,9 +117,9 @@
 </template>
 
 <script>
-    import {db} from "@/main";
-    import firebase from 'firebase/app';
-    import {firebaseApp} from "../main";
+    // import {db} from "@/main";
+    // import firebase from 'firebase/app';
+    // import {firebaseApp} from "../main";
     import {HalfCircleSpinner} from 'epic-spinners';
     import {FadeTransition} from 'vue2-transitions';
 
@@ -142,14 +142,14 @@
         },
         
         mounted() {
-            const config = {
-                apiKey: "AIzaSyBIceaUJCCOxZo3PPWxnQQ2ZoPk0vLPIy4",
-                authDomain: "milan-29557.firebaseapp.com",
-                databaseURL: "https://milan-29557.firebaseio.com",
-                projectId: "milan-29557",
-            };
+            // const config = {
+            //     apiKey: "AIzaSyBIceaUJCCOxZo3PPWxnQQ2ZoPk0vLPIy4",
+            //     authDomain: "milan-29557.firebaseapp.com",
+            //     databaseURL: "https://milan-29557.firebaseio.com",
+            //     projectId: "milan-29557",
+            // };
 
-            this.secondaryApp = firebase.initializeApp(config, "Secondary");
+            // this.secondaryApp = firebase.initializeApp(config, "Secondary");
         },
         
         methods: {
@@ -157,49 +157,49 @@
                 if (this.newAdmin.email && this.newAdmin.password && this.newAdmin.username && this.newAdmin.phone) {
                     this.isLoading = true;
                     
-                    this.secondaryApp.auth().createUserWithEmailAndPassword(this.newAdmin.email, this.newAdmin.password)
-                        .then((res) => {
-                            let admin = {
-                                uid: res.user.uid,
-                                email: res.user.email,
-                                phone: this.newAdmin.phone,
-                                displayName: this.newAdmin.username,
-                            };
+                    // this.secondaryApp.auth().createUserWithEmailAndPassword(this.newAdmin.email, this.newAdmin.password)
+                    //     .then((res) => {
+                    //         let admin = {
+                    //             uid: res.user.uid,
+                    //             email: res.user.email,
+                    //             phone: this.newAdmin.phone,
+                    //             displayName: this.newAdmin.username,
+                    //         };
 
-                            db.collection('Admins')
-                                .doc(res.user.uid)
-                                .set(admin)
-                                .then(() => {
-                                    this.adminModal = false;
-                                    this.$notify({
-                                        title: "Success",
-                                        text: "Admin added successfully...",
-                                        type: "info"
-                                    });
-                                })
-                                .catch(err => {
-                                    this.$notify({
-                                        title: "Error",
-                                        text: err.message,
-                                        type: "error"
-                                    });
-                                })
-                                .finally(() => {
-                                    this.isLoading = false;
-                                });
+                    //         db.collection('Admins')
+                    //             .doc(res.user.uid)
+                    //             .set(admin)
+                    //             .then(() => {
+                    //                 this.adminModal = false;
+                    //                 this.$notify({
+                    //                     title: "Success",
+                    //                     text: "Admin added successfully...",
+                    //                     type: "info"
+                    //                 });
+                    //             })
+                    //             .catch(err => {
+                    //                 this.$notify({
+                    //                     title: "Error",
+                    //                     text: err.message,
+                    //                     type: "error"
+                    //                 });
+                    //             })
+                    //             .finally(() => {
+                    //                 this.isLoading = false;
+                    //             });
 
-                            this.secondaryApp.auth().signOut();
-                        })
-                        .catch(err => {
-                            this.$notify({
-                                title: "Error",
-                                text: err.message,
-                                type: "error"
-                            });
-                        })
-                        .finally(() => {
-                            this.isLoading = false;
-                        })
+                    //         this.secondaryApp.auth().signOut();
+                    //     })
+                    //     .catch(err => {
+                    //         this.$notify({
+                    //             title: "Error",
+                    //             text: err.message,
+                    //             type: "error"
+                    //         });
+                    //     })
+                    //     .finally(() => {
+                    //         this.isLoading = false;
+                    //     })
 
                 } else {
                     this.isLoading = false;
@@ -213,11 +213,11 @@
 
         },
 
-        firestore() {
-            return {
-                admins: db.collection('Admins'),
-            }
-        }
+        // firestore() {
+        //     return {
+        //         admins: db.collection('Admins'),
+        //     }
+        // }
     };
 </script>
 

@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import { db } from "../main";
 import { HalfCircleSpinner } from "epic-spinners";
 import { FadeTransition } from "vue2-transitions";
 
@@ -134,11 +133,11 @@ export default {
     }
   },
 
-  firestore() {
-    return {
-      users: db.collection("Users")
-    };
-  }
+  // firestore() {
+  //   return {
+  //     users: db.collection("Users")
+  //   };
+  // }
 };
 </script>
 

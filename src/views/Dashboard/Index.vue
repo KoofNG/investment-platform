@@ -7,12 +7,12 @@
           <stats-card
             title="NET RETURNS"
             type="gradient-red"
-            :sub-title="analytics.net_returns.toString() || 'loading...'"
+            :sub-title="analytics.net_returns_amt.toString() || 'loading...'"
             icon="ni ni-chart-bar-32" 
             class="mb-4 mb-xl-0"
           >
             <template slot="footer">
-              <span class="text-success mr-2"> <i class="fa fa-arrow-up"></i> 3.48% </span>
+              <span class="text-success mr-2"> <i class="fa fa-arrow-up"></i> {{analytics.net_returns.toString()}}% </span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -21,7 +21,7 @@
           <stats-card
             title="Invested"
             type="gradient-green"
-            :sub-title="analytics.total_investment.toString() || 'loading...'"
+            :sub-title="analytics.invested.toString() || 'loading...'"
             icon="ni ni-chart-pie-35"
             class="mb-4 mb-xl-0"
           >
@@ -35,7 +35,7 @@
           <stats-card
             title="Withdrawal"
             type="gradient-orange"
-            :sub-title="analytics.total_withdrawn.toString() || 'loading...'"
+            :sub-title="analytics.withdrawn.toString() || 'loading...'"
             icon="ni ni-chart-bar-32"
             class="mb-4 mb-xl-0"
           >

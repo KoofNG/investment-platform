@@ -151,7 +151,8 @@ export default {
 
   created() {
     const userId = new SessionStorage().getUserId();
-    this.$http.get("users/" + userId + "/").then((res) => {
+    this.$http.get("users/user_detail/").then((res) => {
+      console.log(res.body);
       if (res.body.isStaff) {
         this.isStaff = true;
       }

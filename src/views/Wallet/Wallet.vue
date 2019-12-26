@@ -103,14 +103,14 @@
                       type="number"
                       placeholder="20000"
                       addon-left-icon="ni ni-money-coins"
-                      v-model="withdrawalRequest.request_amount"
+                      v-model="withdrawal_amount"
                     ></base-input>
                   </div>
                 </div>
 
                 <div class="form-group mb-1">
                   <label class="form-control-label">Bank Name</label>
-                  <select class="form-control" v-model="withdrawalRequest.bank_name"></select>
+                  <select class="form-control"></select>
                 </div>
                 <div class="form-group mb-1">
                   <label class="form-control-label">Account Number</label>
@@ -119,7 +119,6 @@
                       type="number"
                       placeholder="0123456789"
                       addon-left-icon="ni ni-money-coins"
-                      v-model="withdrawalRequest.account_number"
                     ></base-input>
                   </div>
                 </div>
@@ -146,7 +145,7 @@ export default {
       userTransactions: [],
       amount_paid: "",
       transaction_detail: "",
-      withdrawalRequest: "",
+      withdrawal_amount: "",
       bank_name: "",
       account_number: ""
     };
@@ -154,10 +153,40 @@ export default {
 
   methods: {
     submitBankRecord() {
+      
       this.isLoading = true;
+      const bankTransfer = {
+        "transaction_type": "deposit",
+        "amount": this.amount_paid
+      }
+      this.$http.post("transaction/", bankTransfer).then((res, err) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(res);
+          this.isLoading = false;
+          this.$router.push("/dashboard")
+        }
+      })
     },
 
-    submitWithdrawalForm() {}
+    submitWithdrawalForm() {
+      this.isLoading = true;
+      const cashWithdrawal = {
+        "transaction_type": "withdrawal",
+        "amount": this.withdrawal_amount
+      }
+
+      this.$http.post("transaction/", cashWithdrawal).then((res, err) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(res);
+          this.isLoading = false;
+          this.$router.push("/dashboard")
+        }
+      })
+    }
   },
 
   created() {

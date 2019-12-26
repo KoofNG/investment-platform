@@ -7,11 +7,11 @@
     >
       <template slot="links">
         <sidebar-item :link="{ name: 'Dashboard', icon: 'ni ni-tv-2 text-primary', path: '/dashboard'}"/>
-        <sidebar-item :link="{name: 'Orders', icon: 'fas fa-shipping-fast text-orange', path: '/orders'}"/>
-<!--        <sidebar-item :link="{name: 'Errands', icon: 'fas fa-people-carry text-yellow', path: '/errands'}"/>-->
-        <sidebar-item :link="{name: 'Drivers', icon: 'fas fa-user-check text-red', path: '/drivers'}"/>
+        <sidebar-item :link="{name: 'Wallet', icon: 'ni ni-money-coins text-orange', path: '/wallet'}"/>
+       <sidebar-item :link="{name: 'News & Update', icon: 'ni ni-archive-2 text-green', path: '/errands'}"/>
+        <!-- <sidebar-item :link="{name: 'Drivers', icon: 'fas fa-user-check text-red', path: '/drivers'}"/>
         <sidebar-item :link="{name: 'Users', icon: 'fas fa-user text-info', path: '/users'}"/>
-        <sidebar-item :link="{name: 'Payments', icon: 'fas fa-donate text-pink', path: '/payments'}"/>
+        <sidebar-item :link="{name: 'Payments', icon: 'fas fa-donate text-pink', path: '/payments'}"/> -->
       </template>
     </side-bar>
     <div class="main-content" :data="sidebarBackground">

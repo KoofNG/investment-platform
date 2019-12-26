@@ -23,6 +23,7 @@ Vue.use(ArgonDashboard);
 Vue.use(Notifications);
 Vue.use(library);
 Vue.use(FontAwesomeIcon);
+Vue.use(require('vue-moment'));
 
 library.add(faUserSecret);
 Vue.component('font-awesome-icon', FontAwesomeIcon)

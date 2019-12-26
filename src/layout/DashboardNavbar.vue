@@ -36,10 +36,7 @@ export default {
   },
   
   created(){
-      // this.user = this.$cookies.get('user');
       this.$http.get("rest-auth/user/").then((res) => {
-        // if (err) {
-        // }
         this.user = res.body;
       });
 

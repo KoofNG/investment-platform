@@ -34,6 +34,14 @@ const router = new VueRouter({
           }
         },
         {
+          path: "/wallet",
+          name: "wallet",
+          component: () => import("./views/Wallet/Wallet.vue"),
+          meta: {
+            middleware: "auth"
+          }
+        },
+        {
           path: "/car-hiring",
           name: "carHiring",
           component: () => import("./views/CarHiring.vue"),
@@ -121,28 +129,28 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // sets the page's title
 
-  // const middleware = to.meta.middleware;
-  // if (middleware === "auth") {
-  //   if (Vue.prototype.$cookies.get("user") !== null) {
-  //     next();
+  const middleware = to.meta.middleware;
+  if (middleware === "auth") {
+    if (Vue.prototype.$cookies.get("user") !== null) {
+      next();
 
-  //     //Refresh Token
-  //   } else {
-  //     next({
-  //       path: "/login"
-  //     });
-  //   }
-  // }
+      //Refresh Token
+    } else {
+      next({
+        path: "/login"
+      });
+    }
+  }
 
-  // if (middleware === "guest") {
-  //   if (Vue.prototype.$cookies.get("user") === null) {
-  //     next();
-  //   } else {
-  //     next({
-  //       path: "/dashboard"
-  //     });
-  //   }
-  // }
+  if (middleware === "guest") {
+    if (Vue.prototype.$cookies.get("user") === null) {
+      next();
+    } else {
+      next({
+        path: "/dashboard"
+      });
+    }
+  }
 
   // // console.log(Vue.prototype.$cookies.get('user'));
   next();

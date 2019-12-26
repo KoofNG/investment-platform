@@ -2,7 +2,6 @@ export default class StorageService {
 
     setAuth(key, data) {
         if (data) {
-            console.log("DAta: " + data);
             window.sessionStorage.setItem(key, JSON.stringify(data));
         }
     }
@@ -11,6 +10,14 @@ export default class StorageService {
         if (key) {
             return window.sessionStorage.getItem(key);
         }
+    }
+
+    getUserId() {
+        return JSON.parse(window.sessionStorage.getItem("AUTH_DATA")).user.pk;
+    }
+
+    destroySession() {
+        return window.sessionStorage.removeItem('AUTH_DATA');
     }
 
 }

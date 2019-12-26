@@ -72,33 +72,32 @@ export default {
     };
   },
 
-  mounted() {
-    
-
-  },
+  mounted() {},
 
   methods: {
     async handleLogin() {
       if (this.user.email && this.user.password) {
         this.isLoading = true;
 
+        await new UserService.loginUser(this.user).then(
+          (res, err) => {
+            if (err) {
+              this.$notify({
+                title: "Error",
+                text: err.message,
+                type: "error"
+              });
+            } else {
+              // console.log(res);
+              new SessionService().setAuth("AUTH_DATA", res.data);
 
-
-        const user = await new UserService.loginUser(this.user).then((res, err) => {
-          if (err) {
-            this.$notify({
-              title: "Error",
-              text: err.message,
-              type: "error"
-            });
-          } else {
-            console.log(res);
-            new SessionService().setAuth("AUTH_DATA", res.data);
-            this.isLoading = false;
-            this.$router.push("/dashboard");
-            return res;
+              this.$cookies.set("user", JSON.stringify(res.data));
+              this.isLoading = false;
+              this.$router.push("/dashboard");
+              return res;
+            }
           }
-        });
+        );
       } else {
         this.$notify({
           title: "Error",

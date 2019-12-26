@@ -8,6 +8,10 @@ export default{
 
     loginUser(userData) {
         return ClientService.post('rest-auth/login/', userData);
+    },
+
+    logOut() {
+        return ClientService.post('rest-auth/logout/', {});
     }
 
 

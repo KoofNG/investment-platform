@@ -40,14 +40,25 @@
                 <base-table thead-classes="thead-light" :data="userTransactions">
                   <template slot="columns">
                     <th>Transaction Id</th>
+                    <th>Amount</th>
                     <th>Reference Code</th>
                     <th>Transaction Type</th>
+                    <th>Transaction Status</th>
+                    <th>Date Created</th>
+                    <th>Date Modified</th>
                   </template>
 
                   <template slot-scope="{ row }">
                     <th scope="row">{{ row.id }}</th>
+                    <td>{{ row.amount }}</td>
                     <td>{{ row.reference_code }}</td>
-                    <td>{{ row.transaction_type }}</td>
+                    <td class="text-capitalize" :class="{ 
+                      'text-danger': row.transaction_type === 'withdrawal',
+                      'text-success': row.transaction_type === 'deposit'
+                      }">{{ row.transaction_type }}</td>
+                    <td class="text-capitalize" :class="{ 'text-danger': row.status === 'pending'}">{{ row.status }}</td>
+                    <td>{{ row.created_at | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
+                    <td>{{ row.modified | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
                   </template>
                 </base-table>
               </div>

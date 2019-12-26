@@ -57,7 +57,7 @@
               </div>
             </div>-->
             <div class="text-center">
-              <base-button @click="handleRegister" type="primary" class="my-4">
+              <base-button @click="handleRegister" type="primary" class="my-4" :disabled="this.isLoading">
                 <i v-show="this.isLoading" class="fa fa-spinner fa-spin"></i>&nbsp;Create account
               </base-button>
             </div>
@@ -84,7 +84,7 @@
 import UserService from "../../helpers/userService";
 import SessionService from "../../helpers/sessionStorage";
 
-import axios from "axios"
+// import axios from "axios";
 
 // import AuthService from "../../services/auth/authService";
 
@@ -117,6 +117,7 @@ export default {
           const user = await new UserService.registerUser(this.model);
 
           if (user.statusText == "Created" && user.status == 201) {
+            this.$cookies.set("user", JSON.stringify(user.data));
             new SessionService().setAuth("AUTH_DATA", user.data);
             this.isLoading = false;
             this.$router.push("/dashboard");

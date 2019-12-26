@@ -12,7 +12,13 @@ export default{
 
     logOut() {
         return ClientService.post('rest-auth/logout/', {});
+    },
+
+    getUser(userId) {
+        return ClientService.get("users/" + userId + "/");
     }
+
+
 
 
 }

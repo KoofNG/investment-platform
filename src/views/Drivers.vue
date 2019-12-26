@@ -211,7 +211,7 @@ export default {
     },
     toggleFlagDriver(driver) {
       driver.isFlagged = !driver.isFlagged;
-      let text = driver.isFlagged ? "Flagged" : "Unflagged";
+      // let text = driver.isFlagged ? "Flagged" : "Unflagged";
 
       // db.collection("Drivers")
       //   .doc(driver.id)

@@ -86,7 +86,7 @@
           <!--<li class="nav-item">
                       <router-link to='/car-hiring' class="nav-link"><i class="fas fa-taxi"></i> Cars for hire</router-link>
           </li>-->
-          <li class="nav-item">
+          <li class="nav-item" v-if="isStaff">
             <router-link to="/admin" class="nav-link"> <i class="fas fa-lock"></i> Admins </router-link>
           </li>
           <li class="nav-item">
@@ -104,6 +104,11 @@ import SessionStorage from "../../helpers/sessionStorage";
 
 export default {
   name: "sidebar",
+  data() {
+    return {
+      isStaff: false
+    }
+  },
   components: {
     NavbarToggleButton
   },
@@ -143,6 +148,18 @@ export default {
       });
     }
   },
+
+  created() {
+    const userId = new SessionStorage().getUserId();
+    this.$http.get("users/user_detail/").then((res) => {
+      console.log(res.body);
+      if (res.body.isStaff) {
+        this.isStaff = true;
+      }
+      // console.log(res.body);
+    })
+  },
+
   beforeDestroy() {
     if (this.$sidebar.showSidebar) {
       this.$sidebar.showSidebar = false;

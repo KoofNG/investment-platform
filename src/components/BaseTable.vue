@@ -22,7 +22,6 @@
           :index="index">
           <td
             v-for="(column, index) in columns"
-            v-if="hasValue(item, column)"
             :key="index"
           >
             {{ itemValue(item, column) }}

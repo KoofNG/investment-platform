@@ -103,14 +103,12 @@
 <script>
 // import { db } from "../main";
 import { HalfCircleSpinner } from "epic-spinners";
-import { FadeTransition } from "vue2-transitions";
-import { stat } from "fs";
-import { Promise } from "q";
+// import { FadeTransition } from "vue2-transitions";
 
 export default {
   components: {
     HalfCircleSpinner,
-    FadeTransition
+    // FadeTransition
   },
 
   data() {

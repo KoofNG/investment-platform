@@ -8,11 +8,14 @@
             title="NET RETURNS"
             type="gradient-red"
             :sub-title="analytics.net_returns_amt.toString() || 'loading...'"
-            icon="ni ni-chart-bar-32" 
+            icon="ni ni-chart-bar-32"
             class="mb-4 mb-xl-0"
           >
             <template slot="footer">
-              <span class="text-success mr-2"> <i class="fa fa-arrow-up"></i> {{analytics.net_returns.toString()}}% </span>
+              <span class="text-success mr-2">
+                <i class="fa fa-arrow-up"></i>
+                {{ analytics.net_returns.toString() }}%
+              </span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -26,7 +29,9 @@
             class="mb-4 mb-xl-0"
           >
             <template slot="footer">
-              <span class="text-danger mr-2"> <i class="fa fa-arrow-down"></i> 5.72% </span>
+              <span class="text-danger mr-2">
+                <i class="fa fa-arrow-down"></i> 5.72%
+              </span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -40,7 +45,9 @@
             class="mb-4 mb-xl-0"
           >
             <template slot="footer">
-              <span class="text-success mr-2"> <i class="fa fa-arrow-up"></i> 12.18% </span>
+              <span class="text-success mr-2">
+                <i class="fa fa-arrow-up"></i> 12.18%
+              </span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -54,7 +61,9 @@
             class="mb-4 mb-xl-0"
           >
             <template slot="footer">
-              <span class="text-success mr-2"> <i class="fa fa-arrow-up"></i> 54.8% </span>
+              <span class="text-success mr-2">
+                <i class="fa fa-arrow-up"></i> 54.8%
+              </span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -81,15 +90,12 @@
   </div>
 </template>
 <script>
+import RecentOrders from "./RecentOrders";
+import LatestNews from "./LatestNews";
 
 // import { HalfCircleSpinner } from "epic-spinners/src/lib";
 // import { FadeTransition } from "vue2-transitions";
-
-// Tables
 // import SocialTrafficTable from "./Dashboard/SocialTrafficTable";
-import RecentOrders from "./RecentOrders";
-import LatestNews from "./LatestNews"
-
 // import SessionStorage from "../../helpers/sessionStorage"
 
 export default {
@@ -111,6 +117,11 @@ export default {
 
   created() {
 
+
+    console.log(this);
+
+    console.log(user)
+
     this.$http.get("admin/transaction/").then((res, err) => {
       if (err) {
         // console.log(err);
@@ -119,12 +130,12 @@ export default {
       }
     });
 
-    this.$http.get("transaction/").then((res) => {
+    this.$http.get("transaction/").then(res => {
       this.userTransactions = res.body;
       // console.log(res);
     });
 
-    this.$http.get("transaction/all_returns/").then((res) => {
+    this.$http.get("transaction/all_returns/").then(res => {
       this.analytics = res.body;
       // console.log(res.body);
     });

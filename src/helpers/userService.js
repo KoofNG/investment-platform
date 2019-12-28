@@ -18,7 +18,4 @@ export default{
         return ClientService.get("users/" + userId + "/");
     }
 
-
-
-
 }
